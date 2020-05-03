@@ -26,8 +26,8 @@ Licensed under the [MIT License](LICENSE)
 
 |     Avatar                                                      |                        Name                |
 | --------------------                                            |  -------------------------------------     |
-|  <img src="https://avatars.githubusercontent.com/Soofiyan" style="width:100px" >     |                     [Soofiyan atar](https://github.com/Soofiyan)         |
-|  <img src="https://avatars.githubusercontent.com/hritik5102" style="width:100px" >         |               [Hritik Jaiswal](https://github.com/hritik5102)          |
+|  <img src="https://avatars.githubusercontent.com/Soofiyan" style="width:100px;height:100px" >     |                     [Soofiyan atar](https://github.com/Soofiyan)         |
+|  <img src="https://avatars.githubusercontent.com/hritik5102" style="width:100px;height:100px" >         |               [Hritik Jaiswal](https://github.com/hritik5102)          |
 
 <hr/>
 
