@@ -17,6 +17,22 @@
   - [License](#License)
   - [Contributors](#Contributors)
   
+## Architecture
+
+<div align="center" style="height:400px"> 
+    <img src='./Assets/Image/machine-learning-map.png'>
+ 
+</div>
+
+## Clone git repository
+
+```sh
+    $ Git clone "https://github.com/hritik5102/Fundamentals_of_DS_ML_DL"
+```
+
+You can run and edit the algorithms or contribute to them using [Gitpod.io](https://www.gitpod.io/), a free online development environment, with a single click.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](http://gitpod.io/#https://github.com/hritik5102/Fundamentals_of_DS_ML_DL)
 
 ## License
 
@@ -24,10 +40,10 @@ Licensed under the [MIT License](LICENSE)
 
 ## Contributors
 
-|     Avatar                                                      |                        Name                |
+|     Avatar                                                      |                        Email                |
 | --------------------                                            |  -------------------------------------     |
-|  <img src="https://avatars.githubusercontent.com/Soofiyan" style="width:100px;height:100px" >     |                     [Soofiyan atar](https://github.com/Soofiyan)         |
-|  <img src="https://avatars.githubusercontent.com/hritik5102" style="width:100px;height:100px" >         |               [Hritik Jaiswal](https://github.com/hritik5102)          |
+|  [<img src="https://avatars.githubusercontent.com/soofiyan" width="75px;"/><br /><sub><b>Soofiyan atar</b></sub>](https://github.com/soofiyan)       |        soofiyan.a@somaiya.edu                    |
+|  [<img src="https://avatars.githubusercontent.com/hritik5102" width="75px;"/><br /><sub><b>Hritik Jaiswal</b></sub>](https://github.com/hritik5102)  |               hritik.jaiswal@somaiya.edu         |
 
 <hr/>
 
