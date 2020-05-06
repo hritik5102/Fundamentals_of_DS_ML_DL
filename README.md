@@ -21,8 +21,7 @@
 
 <div align="center" style="height:400px"> 
     <img src='./Assets/Image/machine-learning-map.png'>
- 
-</div>
+ </div>
 
 ## Clone git repository
 
