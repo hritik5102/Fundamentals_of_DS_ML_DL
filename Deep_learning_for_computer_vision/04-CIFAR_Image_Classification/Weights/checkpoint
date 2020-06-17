@@ -1,0 +1,2 @@
+model_checkpoint_path: "CIFAR_Dataset.temp.hd5"
+all_model_checkpoint_paths: "CIFAR_Dataset.temp.hd5"
