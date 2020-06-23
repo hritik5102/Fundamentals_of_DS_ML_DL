@@ -19,7 +19,7 @@ carries out some processing on these inputs and produces as output.
 
   **Figure** :
   
-  [<img src="https://qph.fs.quoracdn.net/main-qimg-1a057e476f5c069f825fa198780c211b.webp" width="50%"/>](https://qph.fs.quoracdn.net/main-qimg-1a057e476f5c069f825fa198780c211b.webp)
+  <img src="https://qph.fs.quoracdn.net/main-qimg-1a057e476f5c069f825fa198780c211b.webp" width="50%"/>
 
 * **`What are significance of hidden layer ?`**
 
@@ -62,8 +62,8 @@ It has been proven that  non-trivial function (x³ + x² - x -1) using a single 
 
 We can use any activation function , now let us choose activation function as ReLu to represent the above non trivial function.
 
-[<img src="https://miro.medium.com/max/1400/1*6c0BjULsvVe5zqlkB_Vb3w.png
-" width="50%"/>](https://miro.medium.com/max/1400/1*6c0BjULsvVe5zqlkB_Vb3w.png)
+<img src="https://miro.medium.com/max/1400/1*6c0BjULsvVe5zqlkB_Vb3w.png
+" width="50%"/>
 
 We chose x³+x²-x -1 as my target function. Using only ReLU max(0,x), we iteratively tried different combinations of ReLUs until we had an output that roughly resembled the target. 
 
@@ -196,9 +196,8 @@ activation functions are the foundations for a neural network to learn and
 approximate any kind of complex and continuous relationship between variables. 
 It simply adds non-linearity to the network.
 
-  [<img src="https://image.ibb.co/gEmoSQ/mmm_act_function_1.png
-  " width="50%"/>](https://image.ibb.co/gEmoSQ/mmm_act_function_1.png
-  )
+  <img src="https://image.ibb.co/gEmoSQ/mmm_act_function_1.png
+  " width="50%"/>
 
 * Activation functions reside within neurons, but not all neurons.
 Hidden and output layer neurons possess activation functions, but input layer neurons do not.
@@ -274,17 +273,18 @@ The Activation Functions can be basically divided into 3 types-
   * `All layers of the neural network collapse into one` —with linear activation functions, no matter how many layers in the neural network, the last layer will be a linear function of the first layer (because a linear combination of linear functions is still a linear function). So a linear activation function turns the neural network into just one layer.
 
   #### **`Example`**
-    [<img src="https://miro.medium.com/max/1338/1*xcBdSYRndl6dhouE1y0KHg.png" width="50%"/>](https://miro.medium.com/max/1338/1*xcBdSYRndl6dhouE1y0KHg.png)
+
+  <img src="https://miro.medium.com/max/1338/1*xcBdSYRndl6dhouE1y0KHg.png" width="50%"/>
     
-    <br/>
+  <br/>
 
-    Consider a case where no activation function is used in this network, then from the hidden layer 1 the calculated weighted sum of inputs will be directly passed to hidden layer 2 and it calculates a weighted sum of inputs and pass to the output layer and it calculates a weighted sum of inputs to produce the output. The output can be presented as 
-    <br/>
+  Consider a case where no activation function is used in this network, then from the hidden layer 1 the calculated weighted sum of inputs will be directly passed to hidden layer 2 and it calculates a weighted sum of inputs and pass to the output layer and it calculates a weighted sum of inputs to produce the output. The output can be presented as 
+  <br/>
 
-    [<img src="https://miro.medium.com/max/1068/1*9es-pAjxSJe3tN61B6p64A.png
-    " width="50%"/>](https://miro.medium.com/max/1068/1*9es-pAjxSJe3tN61B6p64A.png)
+  <img src="https://miro.medium.com/max/1068/1*9es-pAjxSJe3tN61B6p64A.png
+  " width="50%"/>
 
-    So the output is simply a linear transformation of weights and inputs and it is not adding any non-linearity to the network. Therefore, this network is similar to a linear regression model which can only address the linear relationship between variables i.e. a model with limited power and not suitable for complex problems like image classifications, object detections, language translations, etc.
+  So the output is simply a linear transformation of weights and inputs and it is not adding any non-linearity to the network. Therefore, this network is similar to a linear regression model which can only address the linear relationship between variables i.e. a model with limited power and not suitable for complex problems like image classifications, object detections, language translations, etc.
 
 
 #### 3. **Non-Linear Activation Functions**
@@ -366,10 +366,10 @@ The Activation Functions can be basically divided into 3 types-
   [<img src="https://miro.medium.com/max/636/1*vDV1QZKWD3MoS96Ht2GknA.png" width="50%"/>](https://miro.medium.com/max/636/1*vDV1QZKWD3MoS96Ht2GknA.png
 )
 
-  Advantages of ReLu activation function:<br/>
-
-    1. Easy to compute.
-    2. Does not saturate for the positive value of the weighted sum of inputs.
+  **Advantages of ReLu activation function**:<br/>
+    
+    * Easy to compute.
+    * Does not saturate for the positive value of the weighted sum of inputs.
 
     Because of its simplicity, ReLu is used as a standard activation function in CNN.
 
@@ -401,9 +401,9 @@ The Activation Functions can be basically divided into 3 types-
   [<img src="https://miro.medium.com/max/712/1*nyX9El4tLjP2XdtaYsyxJQ.png" width="50%"/>](https://miro.medium.com/max/712/1*nyX9El4tLjP2XdtaYsyxJQ.png)
   
     **Advantages of LeakyReLu** <br/>
-        1. No saturation problem in both positive and negative region.
-        2. The neurons do not die because 0.01x ensures that at least a small gradient will flow through. Although the change in weight will be small but after a few iterations it may come out from its original value.
-        3. Easy to compute.
+        1. No saturation problem in both positive and negative region.<br/>
+        2. The neurons do not die because 0.01x ensures that at least a small gradient will flow through. Although the change in weight will be small but after a few iterations it may come out from its original value.<br/>
+        3. Easy to compute.<br/>
         4. Close to zero-centered functions
 
 
