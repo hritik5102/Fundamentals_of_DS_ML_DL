@@ -441,7 +441,7 @@ Training Deep Neural Networks is complicated by the fact that the distribution o
 We normalize the input layer by adjusting and scaling the activations. For example, when we have features from 0 to 1 and some from 1 to 1000, we should normalize them to speed up learning. If the input layer is benefiting from it, why not do the same thing also for the values in the hidden layers, that are changing all the time, and get 10 times or more improvement in the training speed.
 Batch normalization reduces the amount by what the hidden unit values shift around (covariance shift). To explain covariance shift, let’s have a deep network on cat detection. We train our data on only black cats’ images. So, if we now try to apply this network to data with colored cats, it is obvious; we’re not going to do well. The training set and the prediction set are both cats’ images but they differ a little bit. In other words, if an algorithm learned some X to Y mapping, and if the distribution of X changes, then we might need to retrain the learning algorithm by trying to align the distribution of X with the distribution of Y. [Deeplearning.ai: Why Does Batch Norm Work? (C2W3L06)](https://www.youtube.com/watch?v=nUUqwaxLnWs)
 
-<p align="center"><img src="https://miro.medium.com/max/1400/1*VTNB7oSbyaxtIpZ3kXdH4A.png"/>
+<p align="center"><img src="https://miro.medium.com/max/1400/1*VTNB7oSbyaxtIpZ3kXdH4A.png" width="50%"/>
 
 As we know are weights are updated in each epoch during training via the process some optimizors.
 During training if some of weights are bigger then other it will leads to value of that perticular neuron 
@@ -477,7 +477,7 @@ normalization , which will be gaussian with zero mean and unit variance.
 **Where we apply batch normalization ?**
 
 we apply batch normalization after applying linear transformation and then pass normalized value to the activation .
-<img src="https://i.ibb.co/N9pqZRH/Screenshot-441.png" alt="Screenshot-441" border="0">
+<img src="https://i.ibb.co/N9pqZRH/Screenshot-441.png" alt="Screenshot-441" border="0" width="50%">
 
 Before batch normalization all inputs come from different distribution.
 After batch normalization all input neuron in layer come from same distribution i.e mean = 0 and variance = 1
@@ -500,6 +500,7 @@ because without batch normalization it takes more iteration to reach a minima or
 * [Batch Normalization - EXPLAINED!](https://www.youtube.com/watch?v=DtEq44FTPM4)
 * [Deep Learning(CS7015): Lec 9.5 Batch Normalization](https://www.youtube.com/watch?v=1XMjfhEFbFA)
 * [Normalizing Activations in a Network (C2W3L04)](https://www.youtube.com/watch?v=tNIpEZLv_eg&t=170s)
+* [Fitting Batch Norm Into Neural Networks (C2W3L05)](https://www.youtube.com/watch?v=em6dfRxYkYU)
 * [Batch normalization for training of deep neural networks](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/)
 * [Batch normalization in Neural Networks](https://towardsdatascience.com/batch-normalization-in-neural-networks-1ac91516821c)
 
