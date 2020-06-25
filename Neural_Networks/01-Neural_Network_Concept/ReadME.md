@@ -62,8 +62,7 @@ It has been proven that  non-trivial function (x³ + x² - x -1) using a single 
 
 We can use any activation function , now let us choose activation function as ReLu to represent the above non trivial function.
 
-<img src="https://miro.medium.com/max/1400/1*6c0BjULsvVe5zqlkB_Vb3w.png
-" width="50%"/>
+<img src="https://miro.medium.com/max/1400/1*6c0BjULsvVe5zqlkB_Vb3w.png" width="50%"/>
 
 We chose x³+x²-x -1 as my target function. Using only ReLU max(0,x), we iteratively tried different combinations of ReLUs until we had an output that roughly resembled the target. 
 
@@ -163,8 +162,7 @@ a1 is a weighted sum of inputs. Here, the weights are randomly generated.
 
 a1 = w1 * x1 + w2 * x2 + b1 = 1.76 * 0.88 + 0.40 *(-0.49) + 0 = 1.37 approx and <br/> h1 is the value of activation function applied on a1.
 
-[<img src="https://miro.medium.com/max/576/1*WrkgXLQSjHpzmR_H3xsnCQ.png" width="30%"/>](https://miro.medium.com/max/576/1*WrkgXLQSjHpzmR_H3xsnCQ.png
-)
+[<img src="https://miro.medium.com/max/576/1*WrkgXLQSjHpzmR_H3xsnCQ.png" width="30%"/>](https://miro.medium.com/max/576/1*WrkgXLQSjHpzmR_H3xsnCQ.png)
 
 Similarly
 
@@ -196,8 +194,7 @@ activation functions are the foundations for a neural network to learn and
 approximate any kind of complex and continuous relationship between variables. 
 It simply adds non-linearity to the network.
 
-  <img src="https://image.ibb.co/gEmoSQ/mmm_act_function_1.png
-  " width="50%"/>
+  <img src="https://image.ibb.co/gEmoSQ/mmm_act_function_1.png" width="50%"/>
 
 * Activation functions reside within neurons, but not all neurons.
 Hidden and output layer neurons possess activation functions, but input layer neurons do not.
@@ -281,8 +278,7 @@ The Activation Functions can be basically divided into 3 types-
   Consider a case where no activation function is used in this network, then from the hidden layer 1 the calculated weighted sum of inputs will be directly passed to hidden layer 2 and it calculates a weighted sum of inputs and pass to the output layer and it calculates a weighted sum of inputs to produce the output. The output can be presented as 
   <br/>
 
-  <img src="https://miro.medium.com/max/1068/1*9es-pAjxSJe3tN61B6p64A.png
-  " width="50%"/>
+  <img src="https://miro.medium.com/max/1068/1*9es-pAjxSJe3tN61B6p64A.png" width="50%"/>
 
   So the output is simply a linear transformation of weights and inputs and it is not adding any non-linearity to the network. Therefore, this network is similar to a linear regression model which can only address the linear relationship between variables i.e. a model with limited power and not suitable for complex problems like image classifications, object detections, language translations, etc.
 

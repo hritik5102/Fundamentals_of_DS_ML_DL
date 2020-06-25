@@ -420,6 +420,29 @@ Adam uses Momentum and Adaptive Learning Rates to converge faster. We have alrea
 ### **`Batch normalization (Normalization w.r.t batch)`**
 ---
 
+**Problem of Training Deep Networks**
+
+Training deep neural networks, e.g. networks with tens of hidden layers, is challenging.
+
+One aspect of this challenge is that the model is updated layer-by-layer backward from the output to the input using an estimate of error that assumes the weights in the layers prior to the current layer are fixed.
+
+```
+Very deep models involve the composition of several functions or layers. The gradient tells how to update each parameter, under the assumption that the other layers do not change. In practice, we update all of the layers simultaneously.
+```
+
+Because all layers are changed during an update, the update procedure is forever chasing a moving target.
+
+For example, the weights of a layer are updated given an expectation that the prior layer outputs values with a given distribution. This distribution is likely changed after the weights of the prior layer are updated.
+
+Training Deep Neural Networks is complicated by the fact that the distribution of each layer’s inputs changes during training, as the parameters of the previous layers change. This slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities.
+
+**Why do we use batch normalization?**
+
+We normalize the input layer by adjusting and scaling the activations. For example, when we have features from 0 to 1 and some from 1 to 1000, we should normalize them to speed up learning. If the input layer is benefiting from it, why not do the same thing also for the values in the hidden layers, that are changing all the time, and get 10 times or more improvement in the training speed.
+Batch normalization reduces the amount by what the hidden unit values shift around (covariance shift). To explain covariance shift, let’s have a deep network on cat detection. We train our data on only black cats’ images. So, if we now try to apply this network to data with colored cats, it is obvious; we’re not going to do well. The training set and the prediction set are both cats’ images but they differ a little bit. In other words, if an algorithm learned some X to Y mapping, and if the distribution of X changes, then we might need to retrain the learning algorithm by trying to align the distribution of X with the distribution of Y. [Deeplearning.ai: Why Does Batch Norm Work? (C2W3L06)](https://www.youtube.com/watch?v=nUUqwaxLnWs)
+
+<p align="center"><img src="https://miro.medium.com/max/1400/1*VTNB7oSbyaxtIpZ3kXdH4A.png"/>
+
 As we know are weights are updated in each epoch during training via the process some optimizors.
 During training if some of weights are bigger then other it will leads to value of that perticular neuron 
 bigger ,which will create imbalance in network.
@@ -451,6 +474,14 @@ suppose we have `batch size = 3` (let us say we have 3 images)
 Where gamma and beta ensure non linearty , because we are modifing activation , which will gets change after applying 
 normalization , which will be gaussian with zero mean and unit variance.
 
+**Where we apply batch normalization ?**
+
+we apply batch normalization after applying linear transformation and then pass normalized value to the activation .
+<img src="https://i.ibb.co/N9pqZRH/Screenshot-441.png" alt="Screenshot-441" border="0">
+
+Before batch normalization all inputs come from different distribution.
+After batch normalization all input neuron in layer come from same distribution i.e mean = 0 and variance = 1
+
 The basic concept of batch normalization is , when we feed normalized input data
 in network , after multiplication of weight and biases it get unnormalized , so we apply batch norm
 at each layer so that it maintain the normalization at each layer .
@@ -466,17 +497,11 @@ because without batch normalization it takes more iteration to reach a minima or
 
 ### **`Reference`** :
 
-* [https://www.youtube.com/watch?v=dXB-KQYkzNU](https://www.youtube.com/watch?v=dXB-KQYkzNU)<
-* 2015 paper that introduced Batch Normalization: [https://arxiv.org/abs/1502.03167](https://arxiv.org/abs/1502.03167)
-
-* The paper that claims Batch Norm does NOT reduce internal covariate shift as claimed in [1]: [https://arxiv.org/abs/1805.11604](https://arxiv.org/abs/1805.11604)
-
-* Using BN + Dropout: [https://arxiv.org/abs/1905.05928](https://arxiv.org/abs/1905.05928)
-
-* [https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html](https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html)
-
-
-
+* [Batch Normalization - EXPLAINED!](https://www.youtube.com/watch?v=DtEq44FTPM4)
+* [Deep Learning(CS7015): Lec 9.5 Batch Normalization](https://www.youtube.com/watch?v=1XMjfhEFbFA)
+* [Normalizing Activations in a Network (C2W3L04)](https://www.youtube.com/watch?v=tNIpEZLv_eg&t=170s)
+* [Batch normalization for training of deep neural networks](https://machinelearningmastery.com/batch-normalization-for-training-of-deep-neural-networks/)
+* [Batch normalization in Neural Networks](https://towardsdatascience.com/batch-normalization-in-neural-networks-1ac91516821c)
 
 
 

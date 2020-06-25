@@ -359,3 +359,19 @@ With respect to the neural network output, the numerator is concerned with the c
 * [Semantic Segmentation — U-Net](https://medium.com/@keremturgutlu/semantic-segmentation-u-net-part-1-d8d6f6005066)
 
 * [The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification](https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb)
+
+### **Reference material** 
+
+*  [Different Popular Dataset for Various Task](https://www.robots.ox.ac.uk/~vgg/data/) 
+
+* [Tensorflow tutorial on image segmentation](https://www.tensorflow.org/tutorials/images/segmentation)
+
+* [Segnet Tutorial](https://github.com/alexgkendall/SegNet-Tutorial)
+
+* [Semantic segmentation](https://colab.research.google.com/github/dhassault/tf-semantic-example/blob/master/01b_semantic_segmentation_basic_colab.ipynb#scrollTo=It1Ul9OhTUW0)
+
+* [Scene Parsing through ADE20K Datase](http://people.csail.mit.edu/bzhou/publication/scene-parse-camera-ready.pdf)
+
+* [Semantic Segmentation with tf.data in TensorFlow 2 and ADE20K dataset](https://yann-leguilly.gitlab.io/post/2019-12-14-tensorflow-tfdata-segmentation/)
+
+* [Imagenet vggnet resnet inception xception keras](https://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/)
