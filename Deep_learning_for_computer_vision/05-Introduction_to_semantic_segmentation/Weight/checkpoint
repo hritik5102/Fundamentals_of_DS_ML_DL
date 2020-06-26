@@ -1,0 +1,2 @@
+model_checkpoint_path: "Image_segmentation_nuclei_weights.temp.hd5"
+all_model_checkpoint_paths: "Image_segmentation_nuclei_weights.temp.hd5"
