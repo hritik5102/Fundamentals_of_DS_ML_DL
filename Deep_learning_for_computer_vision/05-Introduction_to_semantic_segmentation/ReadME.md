@@ -143,15 +143,15 @@ Operations are being repeated without change in inputs or weights
 ### **`Image Classification`**
 
   A CNN has
-  1. Convolutional layers
-  2. ReLU layers
-  3. Pooling layers
-  4. Fully connected layer
+  * Convolutional layers
+  * ReLU layers
+  * Pooling layers
+  * Fully connected layer
 
-  A classic CNN architecture would look something like this:
+  **A classic CNN architecture would look something like this**:
 
-  Input ->  Convolution -> ReLU -> Convolution -> ReLU -> Pooling -> 
-  ReLU -> Convolution -> ReLU -> Pooling -> Fully Connected <br/>
+  Input =>  Convolution => ReLU => Convolution => ReLU => Pooling => 
+  ReLU => Convolution => ReLU => Pooling => Fully Connected <br/>
 
   A CNN convolves (not convolutes…) learned features with input data and uses 2D convolutional layers. This means that this type of network is ideal for processing 2D images. Compared to other image classification algorithms, CNNs actually use very little preprocessing. This means that they can learn the filters that have to be hand-made in other algorithms. CNNs can be used in tons of applications from image and video recognition, image classification, and recommender systems to natural language processing and medical image analysis.
 
@@ -283,6 +283,14 @@ The assumption that if we consider the one pixel and its neighbourhood pixel the
 same , so we ignore that neighbourhood by skipping one pixel.
 
 ---
+### **Data augmentation**
+---
+
+If you have less number of training pairs, the results might not be good be because the model might overfit. We can increase the size of the dataset by applying random transformations on the images. We can change the color properties like hue, saturation, brightness, etc of the input images. We can also apply transformations such as rotation, scale, and flipping. For the transformations which change the location of the pixels, the segmentation image should also be transformed the same way.
+
+<p align="center"><img src="https://divamgupta.com/assets/images/posts/imgseg/image13.png?style=centerme" width="60%"/>
+
+---
 #### **Defining a loss function**
 ---
 
@@ -344,6 +352,31 @@ With respect to the neural network output, the numerator is concerned with the c
 
 <p align="center"><img src="https://www.jeremyjordan.me/content/images/2018/05/Screen-Shot-2018-05-24-at-10.50.59-PM.png" width="60%"/>
 
+---
+### **Transfer learning**
+---
+
+The CNN models trained for image classification contain meaningful information which can be used for segmentation as well. We can re-use the convolution layers of the pre-trained models in the encoder layers of the segmentation model. Using Resnet or VGG pre-trained on ImageNet dataset is a popular choice. You can read more about transfer learning [here](http://cs231n.github.io/transfer-learning/).
+
+<p align="center"><img src="https://divamgupta.com/assets/images/posts/imgseg/image4.png?style=centerme" width="60%"/>
+
+**Reference** :
+
+* [A Beginner's guide to Deep Learning based Semantic Segmentation using Keras](https://divamgupta.com/image-segmentation/2019/06/06/deep-learning-semantic-segmentation-keras.html)
+
+---
+### **SegNet vs U-net**
+---
+
+**SegNet (Semantic Segmentation)** : The SegNet architecture adopts an encoder-decoder framework. The encoder and decoder layers are symmetrical to each other. The upsampling operation of the decoder layers use the max-pooling indices of the corresponding encoder layers. SegNet does not have any skip connections. Unlike FCN, no learnable parameters are used for upsampling.
+
+SegNet is slower than FCN and DeepLabv1 because SegNet contains the decoder architecture. And it is faster than DeconvNet because it does not have fully connected layers.
+
+And SegNet has low memory requirement during both training and testing. And the model size is much smaller than FCN and DeconvNet.
+
+
+**U-Net** : The UNet architecture adopts an encoder-decoder framework with skip connections. Like SegNet, the encoder and decoder layers are symmetrical to each other.
+
 ### **References** :
 
 * [DLV-2 Semantic Segmentation (Lecture) - SHALA 2020](https://www.youtube.com/watch?v=RVJJZtUS2ho)
@@ -360,9 +393,11 @@ With respect to the neural network output, the numerator is concerned with the c
 
 * [The Complete Beginner’s Guide to Deep Learning: Convolutional Neural Networks and Image Classification](https://towardsdatascience.com/wtf-is-image-classification-8e78a8235acb)
 
+* [Review: SegNet (Semantic Segmentation)](https://towardsdatascience.com/review-segnet-semantic-segmentation-e66f2e30fb96)
+
 ### **Reference material** 
 
-*  [Different Popular Dataset for Various Task](https://www.robots.ox.ac.uk/~vgg/data/) 
+* [Different Popular Dataset for Various Task](https://www.robots.ox.ac.uk/~vgg/data/) 
 
 * [Tensorflow tutorial on image segmentation](https://www.tensorflow.org/tutorials/images/segmentation)
 
@@ -375,3 +410,5 @@ With respect to the neural network output, the numerator is concerned with the c
 * [Semantic Segmentation with tf.data in TensorFlow 2 and ADE20K dataset](https://yann-leguilly.gitlab.io/post/2019-12-14-tensorflow-tfdata-segmentation/)
 
 * [Imagenet vggnet resnet inception xception keras](https://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/)
+
+* [Automating cell nuclei detection with neural network](http://cs230.stanford.edu/files_winter_2018/projects/6937642.pdf)
