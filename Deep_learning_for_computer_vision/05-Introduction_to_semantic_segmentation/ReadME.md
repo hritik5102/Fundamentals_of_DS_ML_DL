@@ -262,9 +262,48 @@ These skip connections from earlier layers in the network (prior to a downsampli
 
 <p align="center"><img src="https://www.jeremyjordan.me/content/images/2018/05/Screen-Shot-2018-05-20-at-12.10.25-PM.png" width="60%"/>
 
+#### **Concatenation**
+
+suppose one input shape is (224,224,3) and another is (224,224,3) 
+after concatenation , output shape which we get is (224,224,6)
+
+<p align="center"><img src="https://i.ibb.co/cb5L76q/Screenshot-443.png" alt="Screenshot-443" border="0" width="70%">
+ 
+---
+### **Type of convolutional**
+---
+
+* 2D Convolutional
+* Dilated / atrous convolutional
+* transposed covolutional
+
+---
+### 2D convolutional
+---
+It is typical 2D convolutional , having kernel size = (3,3) with stride 1 and padding 1
+
+<p align="center"><img src="https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif" width="60%">
+
+**Kernel size** : It is define the field of view of the convolutional
+
+**Stride** : The stride define the step size of the kernel when traversing the image .
+while its default is usally 1 , we can use stride of 2 for downsampling a image similar to maxpooling.  
+
+**Padding** : The padding define how the border of a sample is handled.
+A (half) padding convolutional will keep the spatial output dimension equal to the input , whereas unpadded convolutional will crop away 
+some of the borders , if the kernel size is larger then 1.
+
+**Input and output channel**: A convolutional layer takes a certain number of input channels (I) and calculates a specific number of output channels (O). The needed parameters for such a layer can be calculated by I*O*K, where K equals the number of values in the kernel.
+
 ---
 ### **Dilated/atrous convolutions**
 ---
+2D Convolutional using a 3x3 kernel size with dilated rate 2 and no padding.
+
+<p align="center"><img src="https://miro.medium.com/max/790/1*SVkgHoFoiMZkjy54zM_SUw.gif" border="0" width="60%">
+
+
+Dilated convolutions introduce another parameter to convolutional layers called the **dilation rate**. This defines a spacing between the values in a kernel. A 3x3 kernel with a dilation rate of 2 will have the same field of view as a 5x5 kernel, while only using 9 parameters. Imagine taking a 5x5 kernel and deleting every second column and row.
 
 One benefit of downsampling a feature map is that it broadens the receptive field (with respect to the input) for the following filter, given a constant filter size. Recall that this approach is more desirable than increasing the filter size due to the parameter inefficiency of large filters (discussed here in Section 3.1). However, this broader context comes at the cost of reduced spatial resolution.
 
@@ -281,6 +320,53 @@ field without increasing the number of weights.
 **Answer** : It increases the receptive field 
 The assumption that if we consider the one pixel and its neighbourhood pixel they are most commonly
 same , so we ignore that neighbourhood by skipping one pixel.
+
+
+**Attention to Refine through Multi-Scales for Semantic Segmentation**
+
+<p align="center"><img src="https://storage.googleapis.com/groundai-web-prod/media/users/user_49766/project_215011/images/2.png" width="60%">
+
+---
+### **Transposed Convolutions (a.k.a. deconvolutions or fractionally strided convolutions)**
+---
+
+Some sources use the name deconvolution, which is inappropriate because it’s not a deconvolution. To make things worse deconvolutions do exists, but they’re not common in the field of deep learning. An actual deconvolution reverts the process of a convolution. Imagine inputting an image into a single convolutional layer. Now take the output, throw it into a black box and out comes your original image again. This black box does a deconvolution. It is the mathematical inverse of what a convolutional layer does.
+
+A transposed convolution is somewhat similar because it produces the same spatial resolution a hypothetical deconvolutional layer would. However, the actual mathematical operation that’s being performed on the values is different. A transposed convolutional layer carries out a regular convolution but reverts its spatial transformation.
+
+At this point you should be pretty confused, so let’s look at a concrete example. An image of 5x5 is fed into a convolutional layer. The stride is set to 2, the padding is deactivated and the kernel is 3x3. This results in a 2x2 image.
+
+<p align="center"><img src="https://miro.medium.com/max/588/1*BMngs93_rm2_BpJFH2mS0Q.gif" width="70%">
+
+If we wanted to reverse this process, we’d need the inverse mathematical operation so that 9 values are generated from each pixel we input. Afterward, we traverse the output image with a stride of 2. This would be a deconvolution.
+
+<p align="center"><img src="https://miro.medium.com/max/790/1*Lpn4nag_KRMfGkx1k6bV-g.gif" width="70%">
+
+A transposed convolution does not do that. The only thing in common is it guarantees that the output will be a 5x5 image as well, while still performing a normal convolution operation. To achieve this, we need to perform some fancy padding on the input.
+As you can imagine now, this step will not reverse the process from above. At least not concerning the numeric values.
+It merely reconstructs the spatial resolution from before and performs a convolution. This may not be the mathematical inverse, but for Encoder-Decoder architectures, it’s still very helpful. This way we can combine the upscaling of an image with a convolution, instead of doing two separate processes.
+
+ 
+**why we should not call transposed convolutional as deconvolution** 
+
+if we pass input image of size 4x4 and apply 2D conv then we get 2x2 image
+and using that 2x2 we are producing 4x4 input size.
+then it deconv but here we are modifiying by adding padding over 2x2 .
+
+---
+### **Separable Convolutions**
+---
+
+In a separable convolution, we can split the kernel operation into multiple steps. Let’s express a convolution as y = conv(x, k) where y is the output image, x is the input image, and k is the kernel. Easy. Next, let’s assume k can be calculated by: k = k1.dot(k2). This would make it a separable convolution because instead of doing a 2D convolution with k, we could get to the same result by doing 2 1D convolutions with k1 and k2.
+<p align="center"><img src="https://miro.medium.com/max/860/1*owXMr9DonUUWP1c2Thg_Dw.png" width="70%">
+
+Take the Sobel kernel for example, which is often used in image processing. You could get the same kernel by multiplying the vector [1, 0, -1] and [1,2,1].T. This would require 6 instead of 9 parameters while doing the same operation. The example above shows what’s called a spatial separable convolution, which to my knowledge isn’t used in deep learning.
+
+<p align="center"><img src="https://miro.medium.com/max/2476/1*o3mKhG3nHS-1dWa_plCeFw.png" width="60%">
+
+**Reference**
+
+* [types of convolutions in deep learning](https://towardsdatascience.com/types-of-convolutions-in-deep-learning-717013397f4d)
 
 ---
 ### **Data augmentation**
