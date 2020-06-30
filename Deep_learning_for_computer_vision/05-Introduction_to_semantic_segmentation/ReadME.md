@@ -212,20 +212,22 @@ Similar thing we have in case of upsampling : transpose convolutional aka (also 
 
 So we are doing both upsampling the feature map and learns some weights about how it work.
 
-<p align="center"><img src="https://i.ibb.co/7SgVS44/Screenshot-425.png" alt="Screenshot-425" border="0" width="50%">
-
 **Normal convolution** : Normal 3x3 convolution , with stride 1 and padding 1 <br/>
 input size is equal to output size.
 
-<p align="center"><img src="https://i.ibb.co/gz7H4J3/Screenshot-426.png" alt="Screenshot-426" border="0" width="50%">
+<p align="center"><img src="https://i.ibb.co/7SgVS44/Screenshot-425.png" alt="Screenshot-425" border="0" width="50%">
 
 **Strided convolution** : Normal 3x3 convolution , with stride 2 and padding 1 <br/>
 where size is reducing suppose input of size 4x4 and then output in the form of 2x2.
 
-<p align="center"><img src="https://i.ibb.co/vDc406t/Screenshot-427.png" alt="Screenshot-427" border="0" width="50%">
+<p align="center"><img src="https://i.ibb.co/gz7H4J3/Screenshot-426.png" alt="Screenshot-426" border="0" width="50%">
 
 **Transpose convolution** : 3x3 convolution , with stride 2 and padding 1 <br/>
 input size is 2x2 and output size is 4x4.
+
+<p align="center"><img src="https://i.ibb.co/vDc406t/Screenshot-427.png" alt="Screenshot-427" border="0" width="50%">
+
+
 In input , suppose we are considering one upper left corner pixel which contain the scalar value , now we multiply that one pixel with filter of size 3x3 to get scalar value in the output of one pixel.
 
 ---
@@ -282,7 +284,7 @@ after concatenation , output shape which we get is (224,224,6)
 ---
 It is typical 2D convolutional , having kernel size = (3,3) with stride 1 and padding 1
 
-<p align="center"><img src="https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif" width="60%">
+<p align="center"><img src="https://miro.medium.com/max/790/1*1okwhewf5KCtIPaFib4XaA.gif" width="40%">
 
 **Kernel size** : It is define the field of view of the convolutional
 
@@ -300,7 +302,7 @@ some of the borders , if the kernel size is larger then 1.
 ---
 2D Convolutional using a 3x3 kernel size with dilated rate 2 and no padding.
 
-<p align="center"><img src="https://miro.medium.com/max/790/1*SVkgHoFoiMZkjy54zM_SUw.gif" border="0" width="60%">
+<p align="center"><img src="https://miro.medium.com/max/790/1*SVkgHoFoiMZkjy54zM_SUw.gif" border="0" width="40%">
 
 
 Dilated convolutions introduce another parameter to convolutional layers called the **dilation rate**. This defines a spacing between the values in a kernel. A 3x3 kernel with a dilation rate of 2 will have the same field of view as a 5x5 kernel, while only using 9 parameters. Imagine taking a 5x5 kernel and deleting every second column and row.
@@ -336,11 +338,11 @@ A transposed convolution is somewhat similar because it produces the same spatia
 
 At this point you should be pretty confused, so let’s look at a concrete example. An image of 5x5 is fed into a convolutional layer. The stride is set to 2, the padding is deactivated and the kernel is 3x3. This results in a 2x2 image.
 
-<p align="center"><img src="https://miro.medium.com/max/588/1*BMngs93_rm2_BpJFH2mS0Q.gif" width="70%">
+<p align="center"><img src="https://miro.medium.com/max/588/1*BMngs93_rm2_BpJFH2mS0Q.gif" width="40%">
 
 If we wanted to reverse this process, we’d need the inverse mathematical operation so that 9 values are generated from each pixel we input. Afterward, we traverse the output image with a stride of 2. This would be a deconvolution.
 
-<p align="center"><img src="https://miro.medium.com/max/790/1*Lpn4nag_KRMfGkx1k6bV-g.gif" width="70%">
+<p align="center"><img src="https://miro.medium.com/max/790/1*Lpn4nag_KRMfGkx1k6bV-g.gif" width="40%">
 
 A transposed convolution does not do that. The only thing in common is it guarantees that the output will be a 5x5 image as well, while still performing a normal convolution operation. To achieve this, we need to perform some fancy padding on the input.
 As you can imagine now, this step will not reverse the process from above. At least not concerning the numeric values.
