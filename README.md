@@ -9,13 +9,15 @@
   - [Computer vision](#Computer-vision)
   - [Data science](#Data-science)
   - [DataCamp Notes](#DataCamp_Notes)
-  - [Deep learning](#Deep-learning)
+  - [Deep learning with computer vision](#Deep-learning-with-computer-vision)
+  - [Deep learning with NLP](#Deep-learning-with-NLP)
   - [Fundamentals of python](#Fundamentals-of-python)
   - [Machine learning with tensorflow](#Machine-learning-with-tensorflow)
   - [Machine learning](#Machine-learning)
   - [Resource manuals](#Resource-manuals)
   - [License](#License)
   - [Contributors](#Contributors)
+  
   
 ## Architecture
 
@@ -41,8 +43,10 @@ Licensed under the [MIT License](LICENSE)
 
 |     Avatar                                                      |                        Email                |
 | --------------------                                            |  -------------------------------------     |
-|  [<img src="https://avatars.githubusercontent.com/soofiyan" width="75px;"/><br /><sub><b>Soofiyan atar</b></sub>](https://github.com/soofiyan)       |        soofiyan.a@somaiya.edu                    |
-|  [<img src="https://avatars.githubusercontent.com/hritik5102" width="75px;"/><br /><sub><b>Hritik Jaiswal</b></sub>](https://github.com/hritik5102)  |               hritik.jaiswal@somaiya.edu         |
+|  [<img src="https://avatars.githubusercontent.com/soofiyan" width="75px;"/><br /><sub><b>Soofiyan atar</b></sub>](https://github.com/soofiyan)       |   ![](https://img.shields.io/twitter/url?label=Github&logo=Github&style=social&url=https%3A%2F%2Fgithub.com%2Fhritik5102) &nbsp;&nbsp; ![](https://img.shields.io/twitter/url?label=Linkedin&logo=Linkedin&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fhritik-jaiswal-22a136166%2F) &nbsp;&nbsp; ![](https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2FHritikJ71241501)                    |
+|  [<img src="https://avatars.githubusercontent.com/hritik5102" width="75px;"/><br /><sub><b>Hritik Jaiswal</b></sub>](https://github.com/hritik5102)  |  ![](https://img.shields.io/twitter/url?label=Github&logo=Github&style=social&url=https%3A%2F%2Fgithub.com%2Fhritik5102) &nbsp;&nbsp; ![](https://img.shields.io/twitter/url?label=Linkedin&logo=Linkedin&style=social&url=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fhritik-jaiswal-22a136166%2F) &nbsp;&nbsp; ![](https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2FHritikJ71241501)                     | 
+
+
 
 <hr/>
 
