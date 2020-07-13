@@ -1,0 +1,2 @@
+model_checkpoint_path: "Object_localization_vegetable_weights.temp.hd5"
+all_model_checkpoint_paths: "Object_localization_vegetable_weights.temp.hd5"
