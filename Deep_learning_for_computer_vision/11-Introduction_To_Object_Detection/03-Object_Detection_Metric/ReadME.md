@@ -1,24 +1,27 @@
-
----
 ### **Metrics for object detection**
----
 
-- [### **Metrics for object detection**](#h3-idmetrics-for-object-detection-11metrics-for-object-detectionh3)
 - [Different competitions, different metrics](#different-competitions-different-metrics)
+
 - [Important definitions](#important-definitions)
-- [**Intersection Over Union (IOU)**](#intersection-over-union-iou)
-- [**True Positive, False Positive, False Negative and True Negative**](#true-positive-false-positive-false-negative-and-true-negative)
-  - [**Precision**](#precision)
-  - [**Recall**](#recall)
-- [**Metrics**](#metrics)
-  - [**Precision x Recall curve**](#precision-x-recall-curve)
-  - [**Average Precision**](#average-precision)
+
+- [Intersection Over Union (IOU)](#intersection-over-union-iou)
+
+- [True Positive, False Positive, False Negative and True Negative](#true-positive-false-positive-false-negative-and-true-negative)
+
+  - [Precision](#precision)
+  - [Recall](#recall)
+
+- [Metrics](#metrics)
+
+  - [Precision x Recall curve](#precision-x-recall-curve)
+  - [Average Precision](#average-precision)
     - [11-point interpolation](#11-point-interpolation)
     - [Interpolating all points](#interpolating-all-points)
-    - [**An ilustrated example**](#an-ilustrated-example)
+    - [An ilustrated example](#an-ilustrated-example)
     - [Calculating the 11-point interpolation](#calculating-the-11-point-interpolation)
     - [Calculating the interpolation performed in all points](#calculating-the-interpolation-performed-in-all-points)
-  - [**References**](#references)
+  - [References](#references)
+
 
 <a name="different-competitions-different-metrics"></a> 
 
@@ -177,34 +180,6 @@ The following table shows the bounding boxes with their corresponding confidence
 <p align="center">
 <img src="https://i.ibb.co/r4PbbPh/table-1-v2.png" alt="table-1-v2" border="0" align="center"/></p>
 
-<!---
-| Images | Detections | Confidences | TP or FP |
-|:------:|:----------:|:-----------:|:--------:|
-| Image 1 | A | 88% | FP |
-| Image 1 | B | 70% | TP |
-| Image 1 |	C	| 80% | FP |
-| Image 2 |	D	| 71% | FP |
-| Image 2 |	E	| 54% | TP |
-| Image 2 |	F	| 74% | FP |
-| Image 3 |	G	| 18% | TP |
-| Image 3 |	H	| 67% | FP |
-| Image 3 |	I	| 38% | FP |
-| Image 3 |	J	| 91% | TP |
-| Image 3 |	K	| 44% | FP |
-| Image 4 |	L	| 35% | FP |
-| Image 4 |	M	| 78% | FP |
-| Image 4 |	N	| 45% | FP |
-| Image 4 |	O	| 14% | FP |
-| Image 5 |	P	| 62% | TP |
-| Image 5 |	Q	| 44% | FP |
-| Image 5 |	R	| 95% | TP |
-| Image 5 |	S	| 23% | FP |
-| Image 6 |	T	| 45% | FP |
-| Image 6 |	U	| 84% | FP |
-| Image 6 |	V	| 43% | FP |
-| Image 7 |	X	| 48% | TP |
-| Image 7 |	Y	| 95% | FP |
---->
 
 In some images there are more than one detection overlapping a ground truth (Images 2, 3, 4, 5, 6 and 7). For those cases the first detection is considered TP while the others are FP. This rule is applied by the PASCAL VOC 2012 metric: "e.g. 5 detections (TP) of a single object is counted as 1 correct detection and 4 false detections”.
 
@@ -214,35 +189,7 @@ The Precision x Recall curve is plotted by calculating the precision and recall 
 <p align="center">
 <img src="https://i.ibb.co/XV5ccyf/table-2-v2.png" alt="table-2-v2" border="0" align="center"></p>
 
-<!---
-| Images | Detections | Confidences |  TP | FP | Acc TP | Acc FP | Precision | Recall |
-|:------:|:----------:|:-----------:|:---:|:--:|:------:|:------:|:---------:|:------:|
-| Image 5 |	R	| 95% | 1 | 0 | 1 | 0 | 1       | 0.0666 |
-| Image 7 |	Y	| 95% | 0 | 1 | 1 | 1 | 0.5     | 0.6666 |
-| Image 3 |	J	| 91% | 1 | 0 | 2 | 1 | 0.6666  | 0.1333 |
-| Image 1 | A | 88% | 0 | 1 | 2 | 2 | 0.5     | 0.1333 |
-| Image 6 |	U	| 84% | 0 | 1 | 2 | 3 | 0.4     | 0.1333 |
-| Image 1 |	C	| 80% | 0 | 1 | 2 | 4 | 0.3333  | 0.1333 |
-| Image 4 |	M	| 78% | 0 | 1 | 2 | 5 | 0.2857  | 0.1333 |
-| Image 2 |	F	| 74% | 0 | 1 | 2 | 6 | 0.25    | 0.1333 |
-| Image 2 |	D	| 71% | 0 | 1 | 2 | 7 | 0.2222  | 0.1333 |
-| Image 1 | B | 70% | 1 | 0 | 3 | 7 | 0.3     | 0.2    |
-| Image 3 |	H	| 67% | 0 | 1 | 3 | 8 | 0.2727  | 0.2    |
-| Image 5 |	P	| 62% | 1 | 0 | 4 | 8 | 0.3333  | 0.2666 |
-| Image 2 |	E	| 54% | 1 | 0 | 5 | 8 | 0.3846  | 0.3333 |
-| Image 7 |	X	| 48% | 1 | 0 | 6 | 8 | 0.4285  | 0.4    |
-| Image 4 |	N	| 45% | 0 | 1 | 6 | 9 | 0.7     | 0.4    |
-| Image 6 |	T	| 45% | 0 | 1 | 6 | 10 | 0.375  | 0.4    |
-| Image 3 |	K	| 44% | 0 | 1 | 6 | 11 | 0.3529 | 0.4    |
-| Image 5 |	Q	| 44% | 0 | 1 | 6 | 12 | 0.3333 | 0.4    |
-| Image 6 |	V	| 43% | 0 | 1 | 6 | 13 | 0.3157 | 0.4    |
-| Image 3 |	I	| 38% | 0 | 1 | 6 | 14 | 0.3    | 0.4    |
-| Image 4 |	L	| 35% | 0 | 1 | 6 | 15 | 0.2857 | 0.4    |
-| Image 5 |	S	| 23% | 0 | 1 | 6 | 16 | 0.2727 | 0.4    |
-| Image 3 |	G	| 18% | 1 | 0 | 7 | 16 | 0.3043 | 0.4666 |
-| Image 4 |	O	| 14% | 0 | 1 | 7 | 17 | 0.2916 | 0.4666 |
---->
- 
+
  Plotting the precision and recall values we have the following *Precision x Recall curve*:
  
  <!--- Precision x Recall graph --->

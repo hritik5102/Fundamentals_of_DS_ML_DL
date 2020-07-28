@@ -314,6 +314,20 @@ Over all structure of DPM Object detection
 
 **References**
 
-* [object recognition for dummies part 2](https://lilianweng.github.io/lil-log/2017/12/15/object-recognition-for-dummies-part-2.html)
+* [lilianweng - object recognition for dummies part 2](https://lilianweng.github.io/lil-log/2017/12/15/object-recognition-for-dummies-part-2.html)
 
 * [C3.10 - DPM | Deformable Parts Model | Object Detection | Machine Learning | Computer Vision | EvODN](https://www.youtube.com/watch?v=vAPH6zz4JKc&list=PL1GQaVhO4f_jLxOokW7CS5kY_J1t1T17S&index=26)
+
+* [PyImageSearch - sliding windows for object detection with python and opencv](https://www.pyimagesearch.com/2015/03/23/sliding-windows-for-object-detection-with-python-and-opencv/)
+
+* [The AI Summer - Localization and Object Detection](https://theaisummer.com/Localization_and_Object_Detection/)
+
+* [Machine learning mastery - object recognition with deep learning](https://machinelearningmastery.com/object-recognition-with-deep-learning/)
+
+* [Medium - Deeplearning series objection detection and localization yolo algorithm r cnn](https://medium.com/machine-learning-bites/deeplearning-series-objection-detection-and-localization-yolo-algorithm-r-cnn-71d4dfd07d5f)
+
+* [Analyticsvidhya - First multi label image classification model python](https://www.analyticsvidhya.com/blog/2019/04/build-first-multi-label-image-classification-model-python/)
+
+<p>
+   <h3 align="center">GO TO THE NEXT SECTION -  <a href="../02-Localization_and_Detection/ReadME.md" style="text-decoration:none">Localization and Detection ➡️ </a> </h3>
+</p>
