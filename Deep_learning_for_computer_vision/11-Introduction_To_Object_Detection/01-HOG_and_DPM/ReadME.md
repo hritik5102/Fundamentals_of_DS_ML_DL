@@ -247,14 +247,15 @@ let us say are thresold is 70% then we remove all the boxes with overlap it with
 6. As we get lot of bouding boxes on the image we want only one bounding box for perticular class. we apply **`NMS (Non maximum suppression technique)`**
 to get only one bounding box.
 
-  See the [demo video](https://www.youtube.com/watch?v=SPXocFBjr70)
+See the [demo video](https://www.youtube.com/watch?v=SPXocFBjr70)
+
 ---
 
-**`Question`** : According to the paper published by Dalal and Triggs, they suggest gamma correction is not necessary. I have the doubt about whether correcting gamma is a good option to go for or not. If Gamma correction is necessary what is the gamma value I have to take for better performance ?
+**Question** : According to the paper published by Dalal and Triggs, they suggest gamma correction is not necessary. I have the doubt about whether correcting gamma is a good option to go for or not. If Gamma correction is necessary what is the gamma value I have to take for better performance ?
 
-[what is gamma correction ?](https://www.pyimagesearch.com/2015/10/05/opencv-gamma-correction/)
+To know what is gamma correction check this out :- [gamma correction ](https://www.pyimagesearch.com/2015/10/05/opencv-gamma-correction/)
 
-**`Answer`** : 
+**Answer** : 
 
 log-based gamma correction normally hurts HOG + Linear SVM performance. The square-root (in most cases) or simple variance normalization is better option.
 

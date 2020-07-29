@@ -350,5 +350,5 @@ Predicting the location of the object along with the class is called **object De
 Just like multi-label image classification problems, we can have multi-class object detection problem where we detect multiple kinds of objects in a single image
 
 <p>
-   <h3 align="center">GO TO THE NEXT SECTION -  <a href="../03-Object_Detection_Metric/ReadME.md" style="text-decoration:none">Object Detection Metric ➡️ </a> </h3>
+   <h3 align="center">GO TO THE NEXT SECTION -  <a href="../03-Overfeat_Detection_Network/ReadME.md" style="text-decoration:none">Overfeat Detection Network ➡️ </a> </h3>
 </p>
