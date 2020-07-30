@@ -176,7 +176,8 @@ See the reference video [how sliding window + image pyramid works](https://www.y
   * Classification via a pre-trained (classification) Convolutional Neural Network
   At each stop of the sliding window + image pyramid, we extract the ROI, feed it into a CNN, and obtain the output classification for the ROI.
 
-  <p align="center"><img src="https://d3i71xaburhd42.cloudfront.net/c5543534fa4596d98e564ab9f792e8d97bfedb7a/1-Figure1-1.png" width="50%"/>
+
+<p align="center"><img src="https://d3i71xaburhd42.cloudfront.net/c5543534fa4596d98e564ab9f792e8d97bfedb7a/1-Figure1-1.png" width="50%"/>
 
   If the classification probability of label L is higher than some threshold T, we mark the bounding box of the ROI as the label (L). Repeating this process for every stop of the/ sliding window and image pyramid, we obtain the output object detectors. Finally, we apply non-maxima suppression to the bounding boxes yielding our final output detections.
 
