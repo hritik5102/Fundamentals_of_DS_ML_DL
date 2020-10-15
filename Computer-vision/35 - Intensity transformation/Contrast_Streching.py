@@ -42,7 +42,8 @@ pixelVal_vec = np.vectorize(pixelVal)
 contrast_stretched = pixelVal_vec(gray, r1, s1, r2, s2) 
 
 print(np.min(contrast_stretched),np.max(contrast_stretched))
-# Save edited image. 
+# Save edited image.
+cv2.imshow('grayscale',gray)
 cv2.imshow('contrast_stretch.jpg',contrast_stretched)
 cv2.imwrite('contrast_stretch.jpg',contrast_stretched)
 
