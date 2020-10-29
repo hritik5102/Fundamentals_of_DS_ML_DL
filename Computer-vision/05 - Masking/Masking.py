@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 ## Reading images
-img  = cv2.imread('../Images and Videos/opencv-logo.png')
+img  = cv2.imread('../Images and Videos/skin_lesions.jpg')
 
 ## Converting it to HSV as it will detect color more accurately
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
