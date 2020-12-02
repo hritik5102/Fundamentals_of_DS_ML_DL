@@ -83,6 +83,14 @@ k = cv2.isContourConvex(cnt)
 #STRAIGHT BOUNDING RECTANGLE
 x,y,w,h = cv2.boundingRect(cnt)
 #img_rect = cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+contour,hierarchy =cv2.findContours(thresh2,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+for i in contour:
+    area= cv2.contourArea(i)
+    if area>500:
+        x,y,w,h = cv2.boundingRect(i)
+        img = cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+        cv2.putText(image,"Skin lesion detected",(x,y),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255))
 
 #PRINTING EVERYTHING
 print("Centroid of lesion is: x = ",cx," ;y = ",cy)
