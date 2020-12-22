@@ -22,6 +22,9 @@ thresh2 = cv2.adaptiveThreshold(img, 255,\
 thresh3 = cv2.adaptiveThreshold(img, 255,\
      cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11,2) 
 
+print(ret1)
+print(thresh1)
+
 images = [thresh1, thresh2, thresh3]
 titles = ['Binary', 'Adaptive mean', 'Adaptive Gaussian']
 

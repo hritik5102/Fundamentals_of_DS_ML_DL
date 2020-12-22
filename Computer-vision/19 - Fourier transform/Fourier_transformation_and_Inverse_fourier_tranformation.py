@@ -50,7 +50,7 @@ print(templateM.shape)
 Intermediate shape = (284 x 284) * (284*177) * (177,177) = resultant shape (284,177)
 '''
 # Intermediate state (apply tranformation on original image)
-intermediate = templateM.dot(img).dot(templateN) / width*height
+intermediate = templateM.dot(img).dot(templateN)
 
 #intermediate = np.array(intermediate,dtype=np.float32)
 print(intermediate.shape)
@@ -102,7 +102,7 @@ for x in range(height):
         templateM[x][y] = cmath.exp(1j*2*pi*x*y/height) 
 
 # Intermediate state (apply tranformation on Fourier transformed image)
-IFT = templateM.dot(intermediate).dot(templateN) 
+IFT = templateM.dot(intermediate).dot(templateN) / width*height
 #IFT = np.array(IFT,dtype=np.float32)
 Original_img = np.abs(IFT)
 
