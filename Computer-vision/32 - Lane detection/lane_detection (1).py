@@ -3,7 +3,7 @@ import math
 import numpy as np
 import matplotlib as plt
 
-cap = cv2.VideoCapture('theroad.mp4')
+cap = cv2.VideoCapture('F:/Opencv_Python/theroad.mp4')
 #cap = cv2.VideoCapture(0)
 w=cap.get(3)
 h=cap.get(4)
