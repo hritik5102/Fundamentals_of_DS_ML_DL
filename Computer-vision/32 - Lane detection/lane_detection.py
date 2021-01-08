@@ -4,10 +4,8 @@ import numpy as np
 import matplotlib as plt
 
 cap = cv2.VideoCapture('F:/Opencv_Python/theroad.mp4')
-#cap = cv2.VideoCapture(0)
 w=cap.get(3)
 h=cap.get(4)
-#print(w)
 
 def mouse_event(event, x,y,flags, para):
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -80,7 +78,7 @@ while 1:
     _,black1 = cv2.threshold(edges,100,200,cv2.THRESH_BINARY)
     cv2.imshow('black1',black1)
     cv2.imshow('edges',edges)
-
+    cv2.imshow('Elipse', img)
 ##    minLineLength=50
 ##    lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=20,lines=np.array([]), minLineLength=minLineLength,maxLineGap=40)
 ##
