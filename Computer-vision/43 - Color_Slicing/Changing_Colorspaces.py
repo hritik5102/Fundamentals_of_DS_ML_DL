@@ -10,7 +10,6 @@ he image is read in the BGR format.
 
 # BGR Image
 image = cv2.imread('../Images and Videos/mandrill_monkey.jpg')
-
 image_copy = image.copy()
 # Type and shape ( image.shape[0] => Height and image.shape[1] => Width)
 print("[INFO] Type of image : ", type(image)) 
