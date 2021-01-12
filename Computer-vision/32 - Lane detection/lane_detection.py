@@ -64,6 +64,11 @@ cv2.createTrackbar('centerY', 'cor', 0, 1500, callback)
 cv2.setTrackbarPos('centerX', 'cor', 640)
 cv2.setTrackbarPos('centerY', 'cor', 640)
 
+cv2.createTrackbar('alpha', 'cor', 0,100, callback)
+cv2.createTrackbar('beta', 'cor', 0, 100, callback)
+cv2.setTrackbarPos('alpha', 'cor', 80)
+cv2.setTrackbarPos('beta', 'cor', 100)
+
 def automatic_canny(images, sigma=0.33):
     median = np.median(images)
 
@@ -87,6 +92,9 @@ while True:
 
     centerX = cv2.getTrackbarPos('centerX','cor')
     centerY = cv2.getTrackbarPos('centerY','cor')
+
+    alpha = cv2.getTrackbarPos('alpha','cor')
+    beta = cv2.getTrackbarPos('beta','cor')
 
     # Set mouse callback
     cv2.setMouseCallback('imag', mouse_event)
@@ -151,7 +159,16 @@ while True:
     if lines is not None:
         for line in lines:
             for x1,y1,x2,y2 in line:
-                cv2.line(img, (x1, y1), (x2, y2), [0,0,255],3)
+                cv2.line(line_img, (x1, y1), (x2, y2), [0,0,255],3)
+                
+        # Merge the image with the lines onto the original.
+        # img = img * α + line_img * β + γ
+        # NOTE: img and line_img must be the same shape!
+        alpha = alpha / 100 if alpha > 0 else 0.01
+        beta = beta / 100 if beta > 0 else 0.01
+        img = cv2.addWeighted(img, alpha, line_img, beta, 0.0)
+
+    cv2.imshow('line_img',line_img)
     '''
     # Apply contour to get the bounding box on the lane        
     contours, hierarchy=cv2.findContours(closing,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
