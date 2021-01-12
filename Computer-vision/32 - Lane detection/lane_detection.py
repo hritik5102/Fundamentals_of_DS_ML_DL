@@ -4,8 +4,8 @@ import math
 import numpy as np
 import matplotlib as plt
 
-# FilePath = 'F:/Opencv_Python/theroad.mp4'
-FilePath = 'D:/Github-Projects/Machine_learning/Advanced-Lane-Lines/project_video.mp4'
+FilePath = 'F:/Opencv_Python/theroad.mp4'
+#FilePath = 'D:/Github-Projects/Machine_learning/Advanced-Lane-Lines/project_video.mp4'
 cap = cv2.VideoCapture(FilePath)
 w = cap.get(3)
 h = cap.get(4)
@@ -28,6 +28,7 @@ def callback(x):
 
 
 cv2.namedWindow('cor')
+cv2.resizeWindow('cor', 700, 1000)
 
 cv2.createTrackbar('lowh', 'cor', 0, 180, callback)
 cv2.createTrackbar('highh', 'cor', 0, 180, callback)
@@ -36,114 +37,138 @@ cv2.createTrackbar('highs', 'cor', 0, 255, callback)
 cv2.createTrackbar('lowv', 'cor', 0, 255, callback)
 cv2.createTrackbar('highv', 'cor', 0, 255, callback)
 
+cv2.setTrackbarPos('lowh', 'cor',0)
+cv2.setTrackbarPos('lows', 'cor', 0)
+cv2.setTrackbarPos('lowv', 'cor', 130)
+cv2.setTrackbarPos('highh', 'cor', 255)
+cv2.setTrackbarPos('highs', 'cor', 255)
+cv2.setTrackbarPos('highv', 'cor', 255)
+
+
 cv2.createTrackbar('minline', 'cor', 0, 500, callback)
 cv2.createTrackbar('maxgap', 'cor', 0, 500, callback)
+
+cv2.setTrackbarPos('minline', 'cor', 10)
+cv2.setTrackbarPos('maxgap', 'cor', 20)
 
 cv2.createTrackbar('rad', 'cor', 0, 1800, callback)
 cv2.createTrackbar('rad2', 'cor', 0, 1800, callback)
 cv2.createTrackbar('width', 'cor', 0, 1800, callback)
 
-cv2.createTrackbar('x1', 'cor', 456, 1800, callback)
-cv2.createTrackbar('x2', 'cor', 1000, 1800, callback)
-cv2.createTrackbar('y1', 'cor', 271, 1800, callback)
-cv2.createTrackbar('y2', 'cor', 1011, 1800, callback)
+cv2.setTrackbarPos('rad', 'cor',958)
+cv2.setTrackbarPos('rad2', 'cor', 477)
+cv2.setTrackbarPos('width', 'cor', 520)
 
-cv2.createTrackbar('m', 'cor', 0, 4000, callback)
-cv2.setTrackbarPos('m', 'cor', 2000)
+cv2.createTrackbar('centerX', 'cor', 0, 1500, callback)
+cv2.createTrackbar('centerY', 'cor', 0, 1500, callback)
+cv2.setTrackbarPos('centerX', 'cor', 640)
+cv2.setTrackbarPos('centerY', 'cor', 640)
 
-cv2.resizeWindow('cor', 500, 500)
+def automatic_canny(images, sigma=0.33):
+    median = np.median(images)
+
+    ## Based on some statistics
+    lower = int(max(0, (1-sigma)*median))
+    upper = int(min(255, (1+sigma)*median))
+    edge = cv2.Canny(images, lower, upper,3)
+    return edge
 
 
 while True:
-    _, frame = cap.read()
+    _, img = cap.read()
+
+    # Masking
+    lowh = cv2.getTrackbarPos('lowh','cor')
+    lows = cv2.getTrackbarPos('lows','cor') 
+    lowv = cv2.getTrackbarPos('lowv','cor')
+    highh = cv2.getTrackbarPos('highh','cor')
+    highs = cv2.getTrackbarPos('highs','cor')
+    highv = cv2.getTrackbarPos('highv','cor')
+
+    centerX = cv2.getTrackbarPos('centerX','cor')
+    centerY = cv2.getTrackbarPos('centerY','cor')
 
     # Set mouse callback
     cv2.setMouseCallback('imag', mouse_event)
-
-    # Get region of interest
-    x1 = cv2.getTrackbarPos('x1', 'cor')
-    x2 = cv2.getTrackbarPos('x2', 'cor')
-    y1 = cv2.getTrackbarPos('y1', 'cor')
-    y2 = cv2.getTrackbarPos('y2', 'cor')
-
-    # Crop the image
-    img = frame[x1:x2, y1:y2]
 
     # Hide corner using ellipse
     rad = cv2.getTrackbarPos('rad', 'cor')
     rad2 = cv2.getTrackbarPos('rad2', 'cor')
     width = cv2.getTrackbarPos('width', 'cor')
+    
+    # define range of orange skin lesion color in HSV (Change the value for another color using trackbar)
+    lower_red = np.array([lowh,lows,lowv])
+    upper_red = np.array([highh,highs,highv])
 
-    cv2.ellipse(img, (640, 640), (rad, rad2), 0, 0, 360, (0, 0, 0), width)
+    # Convert BGR to HSV
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    cv2.imshow('hsv',hsv)
+    
+    # Threshold the HSV image to get only blue colors
+    mask = cv2.inRange(hsv, lower_red, upper_red)
+    cv2.imshow('mask',mask)
 
-    # Apply Grayscale
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # Make ellipse to hide (black out) upper region and only focus on the road part
+    cv2.ellipse(mask, (640,640), (rad, rad2), 0, 0, 360, (0, 0, 0), width)   
 
-    # Canny edge detection
-    edges = cv2.Canny(gray, 100, 230, apertureSize=3)
 
-    # thresolding
-    _, thresh = cv2.threshold(edges, 100, 200, cv2.THRESH_BINARY)
+    # Bitwise-AND mask and original image 
+    res = cv2.bitwise_and(img , img, mask = mask)    
+    cv2.imshow('res',res)
 
-    kernel = np.ones((5, 5), np.uint8)
-    dilute = cv2.dilate(thresh, kernel, iterations=2)
+    # Grayscale
+    gray = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
+    cv2.imshow('gray',gray)
 
-    # cv2.imshow('Elipse', img)
+    # Gaussian Blur (Remove noise)
+    gray_blur = cv2.GaussianBlur(gray,(3, 3), 0)
+
+    # Canny edge
+    edges = automatic_canny(gray_blur)
     cv2.imshow('Canny edge', edges)
-    cv2.imshow('threshold', thresh)
-    cv2.imshow('Dilation', dilute)
 
-    minline = cv2.getTrackbarPos('minline', 'cor')
-    maxgap = cv2.getTrackbarPos('maxgap', 'cor')
+    # Thresolding (Binary image)
+    ret, thresh = cv2.threshold(edges,125, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    cv2.imshow('thresold',thresh)
 
-    lines = cv2.HoughLines(edges, 1, np.pi / 180, 100, None)
+    # Define kernel size
+    kernel = np.ones((10,10), np.uint8)
+
+    # Apply closing
+    closing = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)    
+    cv2.imshow('closing', closing)
+
+    # Data loader for hough transform
+    rho = 1
+    theta = np.pi/180
+    threshold = 50
+    
+    min_line_len = cv2.getTrackbarPos('minline', 'cor')
+    max_line_gap = cv2.getTrackbarPos('maxgap', 'cor')
+
+    lines = cv2.HoughLinesP(closing, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
+    line_img = np.zeros((closing.shape[0], closing.shape[1], 3), dtype=np.uint8)
     if lines is not None:
-        for i in range(0, len(lines)):
-            rho = lines[i][0][0]
-            theta = lines[i][0][1]
-            a = math.cos(theta)
-            b = math.sin(theta)
-            x0 = a * rho
-            y0 = b * rho
-            m = cv2.getTrackbarPos('m', 'cor')
-            pt1 = (int(x0 + m*(-b)), int(y0 + m*(a)))
-            pt2 = (int(x0 - m*(-b)), int(y0 - m*(a)))
-            cv2.line(img, pt1, pt2, (0, 255, 0), 3, cv2.LINE_AA)
-
-    # lowh = cv2.getTrackbarPos('lowh', 'cor')
-    # highh = cv2.getTrackbarPos('highh', 'cor')
-    # lows = cv2.getTrackbarPos('lows', 'cor')
-    # highs = cv2.getTrackbarPos('highs', 'cor')
-    # lowv = cv2.getTrackbarPos('lowv', 'cor')
-    # highv = cv2.getTrackbarPos('highv', 'cor')
-
-    # lowred = np.array([lowh, lows, lowv])
-    # highred = np.array([highh, highs, highv])
-    # hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
-    # mask = cv2.inRange(hsv, lowred, highred)
-
-    # kernel = np.ones((10, 10), np.uint8)
-    # dilute = cv2.dilate(mask, kernel, iterations=1)
-    # opening = cv2.morphologyEx(dilute, cv2.MORPH_CLOSE, kernel)
-
-    # cv2.imshow('mask', mask)
-    # cv2.imshow('opening', opening)
-
-    # contours, hierarchy = cv2.findContours(
-    #     black1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-    # for i in contours:
-    #     area = cv2.contourArea(i)
-    #     if(area > 1000):
-    #         x, y, w, h = cv2.boundingRect(i)
-    #         rect = cv2.minAreaRect(i)
-    #         box = cv2.boxPoints(rect)
-    #         box = np.int0(box)
-    #         cv2.drawContours(img, contours, -1, (255, 0, 0), 3)
-
-    cv2.imshow('Output', img)
-
+        for line in lines:
+            for x1,y1,x2,y2 in line:
+                cv2.line(img, (x1, y1), (x2, y2), [0,0,255],3)
+    '''
+    # Apply contour to get the bounding box on the lane        
+    contours, hierarchy=cv2.findContours(closing,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    for i in contours:
+        area = cv2.contourArea(i)
+        if(area>10000):
+            x,y,w,h = cv2.boundingRect(i)
+            
+            rect = cv2.minAreaRect(i)
+            box = cv2.boxPoints(rect)
+            box = np.int0(box)
+            
+            #cv2.drawContours(img,[box],0,(255,0,0),4)
+            cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),4)
+            cv2.putText(img,"Lane detected",(x,y),cv2.FONT_HERSHEY_SIMPLEX,4, (0,255,0),cv2.LINE_AA)
+    '''
+    cv2.imshow('Output', img)        
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
         break
