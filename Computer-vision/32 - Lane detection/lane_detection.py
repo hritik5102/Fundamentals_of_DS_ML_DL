@@ -4,24 +4,10 @@ import math
 import numpy as np
 import matplotlib as plt
 
-FilePath = 'F:/Opencv_Python/theroad.mp4'
-#FilePath = 'D:/Github-Projects/Machine_learning/Advanced-Lane-Lines/project_video.mp4'
+FilePath = '../Images and Videos/theroad.mp4'
 cap = cv2.VideoCapture(FilePath)
 w = cap.get(3)
 h = cap.get(4)
-
-def mouse_event(event, x, y, flags, para):
-    if event == cv2.EVENT_LBUTTONDOWN:
-        print(event)
-        pixel = hsv[y, x]
-
-        cv2.setTrackbarPos('lowh', 'cor', pixel[0] - 10)
-        cv2.setTrackbarPos('highh', 'cor', pixel[0] + 10)
-        cv2.setTrackbarPos('lows', 'cor', pixel[1] - 20)
-        cv2.setTrackbarPos('highs', 'cor', pixel[1] + 20)
-        cv2.setTrackbarPos('lowv', 'cor', pixel[2] - 50)
-        cv2.setTrackbarPos('highv', 'cor', pixel[2] + 50)
-
 
 def callback(x):
     pass
@@ -69,6 +55,47 @@ cv2.createTrackbar('beta', 'cor', 0, 100, callback)
 cv2.setTrackbarPos('alpha', 'cor', 80)
 cv2.setTrackbarPos('beta', 'cor', 100)
 
+cv2.namedWindow('Perspective_transform')
+cv2.resizeWindow('Perspective_transform', 700, 1000)
+
+# 1280 -> width and 720 -> Height
+cv2.createTrackbar('src_x1', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('src_y1', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('src_x2', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('src_y2', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('src_x3', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('src_y3', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('src_x4', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('src_y4', 'Perspective_transform', 0, 720, callback)
+
+cv2.createTrackbar('dist_x1', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('dist_y1', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('dist_x2', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('dist_y2', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('dist_x3', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('dist_y3', 'Perspective_transform', 0, 720, callback)
+cv2.createTrackbar('dist_x4', 'Perspective_transform', 0, 1280, callback)
+cv2.createTrackbar('dist_y4', 'Perspective_transform', 0, 720, callback)
+
+cv2.setTrackbarPos('src_x1', 'Perspective_transform', 523)
+cv2.setTrackbarPos('src_y1', 'Perspective_transform', 453)
+cv2.setTrackbarPos('src_x2', 'Perspective_transform', 811)
+cv2.setTrackbarPos('src_y2', 'Perspective_transform', 440)
+cv2.setTrackbarPos('src_x3', 'Perspective_transform', 405)
+cv2.setTrackbarPos('src_y3', 'Perspective_transform', 639)
+cv2.setTrackbarPos('src_x4', 'Perspective_transform', 1261)
+cv2.setTrackbarPos('src_y4', 'Perspective_transform', 671)
+
+cv2.setTrackbarPos('dist_x1', 'Perspective_transform', 160)
+cv2.setTrackbarPos('dist_y1', 'Perspective_transform', 93)
+cv2.setTrackbarPos('dist_x2', 'Perspective_transform', 1200)
+cv2.setTrackbarPos('dist_y2', 'Perspective_transform', 0)
+cv2.setTrackbarPos('dist_x3', 'Perspective_transform', 200)
+cv2.setTrackbarPos('dist_y3', 'Perspective_transform', 710)
+cv2.setTrackbarPos('dist_x4', 'Perspective_transform', 1200)
+cv2.setTrackbarPos('dist_y4', 'Perspective_transform', 710)
+
+
 def automatic_canny(images, sigma=0.33):
     median = np.median(images)
 
@@ -78,10 +105,58 @@ def automatic_canny(images, sigma=0.33):
     edge = cv2.Canny(images, lower, upper,3)
     return edge
 
+def perspectiveWarp(inpImage):
+
+    # Get image size
+    img_size = (inpImage.shape[1], inpImage.shape[0])
+    src_x1 = cv2.getTrackbarPos('src_x1','Perspective_transform')
+    src_y1 = cv2.getTrackbarPos('src_y1','Perspective_transform') 
+    src_x2 = cv2.getTrackbarPos('src_x2','Perspective_transform')
+    src_y2 = cv2.getTrackbarPos('src_y2','Perspective_transform')
+    src_x3 = cv2.getTrackbarPos('src_x3','Perspective_transform')
+    src_y3 = cv2.getTrackbarPos('src_y3','Perspective_transform')
+    src_x4 = cv2.getTrackbarPos('src_x4','Perspective_transform')
+    src_y4 = cv2.getTrackbarPos('src_y4','Perspective_transform')
+
+    dist_x1 = cv2.getTrackbarPos('dist_x1','Perspective_transform')
+    dist_y1 = cv2.getTrackbarPos('dist_y1','Perspective_transform') 
+    dist_x2 = cv2.getTrackbarPos('dist_x2','Perspective_transform')
+    dist_y2 = cv2.getTrackbarPos('dist_y2','Perspective_transform')
+    dist_x3 = cv2.getTrackbarPos('dist_x3','Perspective_transform')
+    dist_y3 = cv2.getTrackbarPos('dist_y3','Perspective_transform')
+    dist_x4 = cv2.getTrackbarPos('dist_x4','Perspective_transform')
+    dist_y4 = cv2.getTrackbarPos('dist_y4','Perspective_transform')
+    
+    # Perspective points to be warped
+    src = np.float32([[src_x1,src_y1],
+                      [src_x2, src_y2],
+                      [src_x3, src_y3],
+                      [src_x4, src_y4]])
+
+    # Window to be shown
+    dst = np.float32([[dist_x1,dist_y1],
+                      [dist_x2,dist_y2],
+                      [dist_x3,dist_y3],
+                      [dist_x4,dist_y4]])
+
+    # Matrix to warp the image for birdseye window
+    matrix = cv2.getPerspectiveTransform(src, dst)
+    # Inverse matrix to unwarp the image for final window
+    minv = cv2.getPerspectiveTransform(dst, src)
+    birdseye = cv2.warpPerspective(inpImage, matrix, img_size)
+
+    # Get the birdseye window dimensions
+    height, width = birdseye.shape[:2]
+
+    # Divide the birdseye view into 2 halves to separate left & right lanes
+    birdseyeLeft  = birdseye[0:height, 0:width // 2]
+    birdseyeRight = birdseye[0:height, width // 2:width]
+
+    return birdseye, birdseyeLeft, birdseyeRight, minv
 
 while True:
     _, img = cap.read()
-
+    
     # Masking
     lowh = cv2.getTrackbarPos('lowh','cor')
     lows = cv2.getTrackbarPos('lows','cor') 
@@ -90,21 +165,20 @@ while True:
     highs = cv2.getTrackbarPos('highs','cor')
     highv = cv2.getTrackbarPos('highv','cor')
 
+    # For ellipse (center cordinates)
     centerX = cv2.getTrackbarPos('centerX','cor')
     centerY = cv2.getTrackbarPos('centerY','cor')
 
+    # addWeighted parameters
     alpha = cv2.getTrackbarPos('alpha','cor')
     beta = cv2.getTrackbarPos('beta','cor')
-
-    # Set mouse callback
-    cv2.setMouseCallback('imag', mouse_event)
 
     # Hide corner using ellipse
     rad = cv2.getTrackbarPos('rad', 'cor')
     rad2 = cv2.getTrackbarPos('rad2', 'cor')
     width = cv2.getTrackbarPos('width', 'cor')
     
-    # define range of orange skin lesion color in HSV (Change the value for another color using trackbar)
+    # define range of white color in HSV (Change the value for another color using trackbar)
     lower_red = np.array([lowh,lows,lowv])
     upper_red = np.array([highh,highs,highv])
 
@@ -130,11 +204,11 @@ while True:
 
     # Gaussian Blur (Remove noise)
     gray_blur = cv2.GaussianBlur(gray,(3, 3), 0)
-
+    
     # Canny edge
     edges = automatic_canny(gray_blur)
     cv2.imshow('Canny edge', edges)
-
+    
     # Thresolding (Binary image)
     ret, thresh = cv2.threshold(edges,125, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
     cv2.imshow('thresold',thresh)
@@ -167,6 +241,11 @@ while True:
         alpha = alpha / 100 if alpha > 0 else 0.01
         beta = beta / 100 if beta > 0 else 0.01
         img = cv2.addWeighted(img, alpha, line_img, beta, 0.0)
+
+    birdView, birdViewL, birdViewR, minverse = perspectiveWarp(img)
+    cv2.imshow('birdView',birdView)
+    cv2.imshow('birdViewL',birdViewL)
+    cv2.imshow('birdViewR',birdViewR)
 
     cv2.imshow('line_img',line_img)
     '''
