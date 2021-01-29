@@ -34,9 +34,9 @@ while True:
         #cv2.imshow('roi_gray',roi_gray)
 
 
-        k = cv2.waitKey(10) & 0xff
-        if k==27:
-            break
+    k = cv2.waitKey(1) & 0xff
+    if k==27:
+        break
 
 cap.release()
 cv2.destroyAllWindows()
