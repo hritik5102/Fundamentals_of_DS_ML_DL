@@ -248,8 +248,8 @@ The Activation Functions can be basically divided into 3 types-
 
   A binary step function is a threshold-based activation function. If the input value is above or below a certain threshold, the neuron is activated and sends exactly the same signal to the next layer.
 
-  [<img src="https://missinglink.ai/wp-content/uploads/2018/11/binarystepfunction.png" width="40%"/>](https://missinglink.ai/wp-content/uploads/2018/11/binarystepfunction.png)
-
+<img src="https://i.ibb.co/8KcHLCY/binarystepfunction.png" alt="binarystepfunction" border="0">
+  
   The problem with a step function is that it does not allow multi-value outputs—for example, it cannot support classifying the inputs into one of several categories.
 
 #### 2. **Linear or Identity Activation Function**
@@ -261,7 +261,7 @@ The Activation Functions can be basically divided into 3 types-
 
   A linear activation function takes the form: A = cx
 
-  [<img src="https://missinglink.ai/wp-content/uploads/2018/11/graphsright.png" width="30%"/>](https://missinglink.ai/wp-content/uploads/2018/11/graphsright.png)
+<img src="https://i.ibb.co/ZfRZC4p/graphsright.png" alt="graphsright" border="0">
 
   However, a linear activation function has two major problems:
 
@@ -659,26 +659,22 @@ Let’s check the derivative.
 
 **Reference** :
 
-* [https://www.youtube.com/watch?v=GJXKOrqZauk](https://www.youtube.com/watch?v=GJXKOrqZauk)
+* [Code Wrestling - Back Propagation in Neural Network with an Example | Machine Learning (2019)](https://www.youtube.com/watch?v=GJXKOrqZauk)
 
-* [http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html](http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html)
+* [Principles of training multi-layer neural network using backpropagation](http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html)
 
-* [How-does-back-propagation-in-artificial-neural-networks-work](https://towardsdatascience.com/how-does-back-propagation-in-artificial-neural-networks-work-c7cad873ea7)
+* [TowardsDataScience - How does back propagation in artificial neural networks work](https://towardsdatascience.com/how-does-back-propagation-in-artificial-neural-networks-work-c7cad873ea7)
 
-* [Neural-networks-and-backpropagation-explained-in-a-simple-way](https://medium.com/datathings/neural-networks-and-backpropagation-explained-in-a-simple-way-f540a3611f5e)
+* [Medium - Neural networks and backpropagation explained in a simple way](https://medium.com/datathings/neural-networks-and-backpropagation-explained-in-a-simple-way-f540a3611f5e)
 
-**Reference** :
+* [ML CheatSheet - Overview of forward propagation](https://ml-cheatsheet.readthedocs.io/en/latest/forwardpropagation.html)
 
-* [Overview of forward propagation](https://ml-cheatsheet.readthedocs.io/en/latest/forwardpropagation.html)
+* [Playground Tensorflow](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.58811&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
 
-* [https://playground.tensorflow.org](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.58811&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
+* [OpenAI - Deep Double Descent](https://openai.com/blog/deep-double-descent/)
 
-* [https://openai.com/blog/deep-double-descent/](https://openai.com/blog/deep-double-descent/)
+* [Google AI Blog - Learning to Smell: Using Deep Learning to Predict the Olfactory Properties of Molecules](https://ai.googleblog.com/2019/10/learning-to-smell-using-deep-learning.html)
 
-* [http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html](http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html)
+* [3Blue1Brown - Backpropagation calculus | Deep learning, chapter 4](https://www.youtube.com/watch?v=tIeHLnjs5U8)
 
-* [Learning-to-smell-using-deep-learning](https://ai.googleblog.com/2019/10/learning-to-smell-using-deep-learning.html)
-
-* [https://www.youtube.com/watch?v=tIeHLnjs5U8](https://www.youtube.com/watch?v=tIeHLnjs5U8)
-
-* [https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+* [3Blue1Brown - Neural networks playlist](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
