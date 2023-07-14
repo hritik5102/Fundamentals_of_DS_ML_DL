@@ -1,2 +1,37 @@
-.history
-.dist
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+env.bak/
+ENV/
+.venv/
+
+# Compiled Python files
+*.pyc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# Logs and databases
+*.log
+*.sqlite3
+db.sqlite3
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# System and temporary files
+.DS_Store
+desktop.ini
