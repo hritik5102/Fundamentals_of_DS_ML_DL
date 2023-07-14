@@ -43,12 +43,36 @@ The [requirements.txt](https://github.com/hritik5102/Fundamentals_of_DS_ML_DL/bl
 $ pip install -r requirements.txt
 ```
 
+<!-- ROADMAP -->
+## Roadmap
 
+See the [open issues](https://github.com/hritik5102/Fundamentals_of_DS_ML_DL/issues) for a list of proposed features (and known issues).
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+Make sure your changes don't break existing functionality without `good reason`.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please refer to the [contributing](Contributing.md) guide/steps for instructions on how to contribute to this project.
+
+Discuss the features, ideas you want to add to the project from [here 📌](https://github.com/hritik5102/Fundamentals_of_DS_ML_DL/discussions)
 ## License
 
-Licensed under the [MIT License](LICENSE) 
+Distributed under the [MIT License](LICENSE). See LICENSE for more information.
+## Support me
 
+[(Back to Top)](#table-of-contents)
 
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hritikdj)
 ## Contributors
 
 |                                                                                                                                                                                                                   <a href="https://hritik5102.github.io/"><img src="https://avatars.githubusercontent.com/hritik5102" width="150px" height="150px" /></a>                                                                                                                                                                                                                    |
