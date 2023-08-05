@@ -5,6 +5,7 @@ import glob
 import matplotlib.pyplot as plt
 import os
 from mpl_toolkits.mplot3d import Axes3D
+import sys
 # Reference : 'https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_calib3d/py_calibration/py_calibration.html#calibration'
 # Reference : OpenCv and Camera Calibration on a Raspberry Pi 3 (https://www.youtube.com/watch?v=QV1a1G4lL3U)
 
@@ -175,6 +176,6 @@ def camera_calibration(image_dir, nRows, nCols, dimension):
 
 
 if __name__ == '__main__':
-    camera_calibration(image_dir = 'camera_cal',nRows=9, nCols = 6, dimension = 25)
+    camera_calibration(image_dir = '../Images and Videos/camera_calibration_images',nRows=9, nCols = 6, dimension = 25)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

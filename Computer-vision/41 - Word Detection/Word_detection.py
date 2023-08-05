@@ -4,10 +4,15 @@ output : word detection on document (Simple OCR type of application)
 
 import cv2
 import numpy as np
+from matplotlib import pyplot as plt
+import math
 import imutils
 
 # frame read
 frame = cv2.imread('test.jpeg')
+
+# resize
+frame = cv2.resize(frame , (600,600))
 
 # grayscale
 gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
@@ -46,19 +51,17 @@ for c in cntsv:
     cv2.drawContours(frame, [c], -1, (255,255,255), 2)
 
 # repair image as neccesary info is removed during horizontal and vertical line removal
-'''
 repair_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1,6))
 repair_vkernel = cv2.getStructuringElement(cv2.MORPH_RECT, (6,1))
 result1 = 255 - cv2.morphologyEx(255 - frame, cv2.MORPH_CLOSE, repair_kernel+repair_vkernel, iterations=1)
 
-cv2.imshow('result1', result1)
-'''
-
 # imshow  
+
 cv2.imshow('thresh', thresh)
 cv2.imshow('horizontal_lines', horizontal_lines)
 cv2.imshow('vertical_lines', vertical_lines)
 cv2.imshow('frame', frame)
+cv2.imshow('result1', result1)
 
 # grayscale
 
@@ -76,6 +79,8 @@ dilation = cv2.dilate(canny,kernel,iterations = 1)
 
 contour,hierachy=cv2.findContours(dilation,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
+#contour = contour[0] if len(contour) == 2 else contour[1]
+
 for i in contour:
     area= cv2.contourArea(i)
     if area>20:
@@ -87,11 +92,10 @@ cv2.imshow('output' ,output)
 cv2.imshow('dilate' ,dilation)
 cv2.imshow('opening' ,opening)
 cv2.imshow('original_frame' ,frame)
+cv2.imwrite('output.jpg', frame)
 cv2.imshow('canny' ,canny)
 cv2.imshow('thresh1' ,thresh1)
 
-# Saving output image
-cv2.imwrite('output.jpg', frame)
 
 # destroy all window
 cv2.waitKey(0)

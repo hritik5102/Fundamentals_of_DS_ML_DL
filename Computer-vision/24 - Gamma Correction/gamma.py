@@ -2,15 +2,13 @@ import cv2
 import numpy as np
 
 '''
-
 Intensity transformation
 Power-law (gamma) transformations can be mathematically expressed as s = cr^{Y}
+
 Y: gamma correction
 r: pixel value of the image
 s: output pixel value
 
-Apply different value of gamma on the "normalised image" (Important) and then multiply by scaling constant (For 8 bit, c=255)
-Normalized image means first, our image pixel intensities must be scaled from the range [0, 255] to [0, 1.0].
 '''
 
 def gamma_filter(image , gamma = 1.0):
@@ -41,14 +39,14 @@ for gamma in np.arange(0.0,3.5,0.5):
         continue
 
     gamma = gamma if gamma>0 else 0.1
+    output = gamma_filter(frame ,gamma)
+    output2 = inv_gamma_filter(frame ,gamma)
     
     if methods=='g':
-        output = gamma_filter(frame ,gamma)
         cv2.putText(output ,"gamma={}".format(gamma) , (10,30) , cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,120, 255), 2)
         cv2.imshow("images" , np.hstack([frame,output]))
     else:
-        output2 = inv_gamma_filter(frame ,gamma)
-        cv2.putText(output2 ,"inverse gamma={}".format(gamma) , (10,30) , cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,120, 255), 2)
+        cv2.putText(output2 ,"gamma={}".format(gamma) , (10,30) , cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,120, 255), 2)
         cv2.imshow("images" , np.hstack([frame,output2]))
     cv2.waitKey(0)
 

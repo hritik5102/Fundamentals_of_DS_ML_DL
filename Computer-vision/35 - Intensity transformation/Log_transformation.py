@@ -6,10 +6,7 @@ warnings.filterwarnings("ignore")
 # Open the image. 
 img = cv2.imread('../Images and Videos/flower.jpg') 
 
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
 cv2.imshow('image',img)
-cv2.imshow('gray',gray)
 
 '''
 log transformation : S = c*log(1+r)
@@ -33,7 +30,7 @@ def log_transformation(img):
 
 
 print(img.shape)
-log_transformed_image = log_transformation(gray)
+log_transformed_image = log_transformation(img)
 
 cv2.imshow('log transformed',log_transformed_image)              
 # Save the output. 

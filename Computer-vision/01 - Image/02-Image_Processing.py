@@ -4,40 +4,49 @@ output : Output image can be resize
          imwrite to save the image
 '''
 
+# Import package
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
-import imutils
 
 
-img = cv2.imread('dog.png',cv2.IMREAD_UNCHANGED)
+def main():
+    # Display the set of flags which start with COLOR_
+    flags = [i for i in dir(cv2) if i.startswith('COLOR_')]
+    print(flags)
 
-'''
-Change the resolution of image
+    # Read image
+    img = cv2.imread('../Images and Videos/dog.png', cv2.IMREAD_UNCHANGED)
 
-width = int(img.shape[1] * 50/ 100)
-height = int(img.shape[0] * 50/ 100)
-dim = (width, height)
-img = cv2.resize(img, dim, interpolation =cv2.INTER_AREA) 
-'''
+    # Use to resize the window - basically you can strech the window
+    cv2.namedWindow('Original_Image', cv2.WINDOW_NORMAL)
 
-cv2.namedWindow('image' , cv2.WINDOW_NORMAL)  #use to resize the window
-cv2.imshow('image',img)
+    # Display original image
+    cv2.imshow('Original_Image', img)
 
-k = cv2.waitKey(0) & 0xFF
+    # Convert into grayscale image
+    grayscale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-if k == 27:                         # wait for ESC key to exit
-    cv2.destroyAllWindows() 
-elif k == ord('a'):
-    cv2.imwrite('img_copy.jpg', img)     # wait for 'a' key to save and exit 
-    cv2.destroyAllWindows()
+    # Display grayscale image
+    cv2.imshow('grayscale', grayscale)
 
-flags = [i for i in dir(cv2) if i.startswith('COLOR_')]
+    # Change the resolution of image
+    width = int(img.shape[1] * 50 / 100)
+    height = int(img.shape[0] * 50 / 100)
+    dim = (width, height)
 
-print(flags)
+    resized_img = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
 
-##plt.imshow(img, cmap = 'gray', interpolation = ' bicubic')
-##plt.xticks([]), plt.yticks([])
-##plt.show()
+    # Display resized image
+    cv2.imshow('resized_img', resized_img)
 
-  
+    k = cv2.waitKey(0) & 0xFF
+
+    if k == 27:                         # wait for ESC key to exit
+        cv2.destroyAllWindows()
+    elif k == ord('a'):
+        # wait for 'a' key to save and exit
+        cv2.imwrite('img_copy.jpg', img)
+        cv2.destroyAllWindows()
+
+
+main()

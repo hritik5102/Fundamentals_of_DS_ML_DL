@@ -43,7 +43,7 @@ for i in range(h):
         else:
             gray_level_slicing_without_background[i][j] = 0
 
-# Gray level slicing with background
+# Gray level slicing without background
 
 for i in range(h):
     for j in range(w):

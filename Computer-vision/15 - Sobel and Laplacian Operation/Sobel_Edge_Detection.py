@@ -33,7 +33,6 @@ plt.title("Original Image (I)")
 plt.imshow(image,cmap = "gray")
 
 (h,w) = image.shape
-print("Height : {} and width : {}".format(h,w))
 imgx = np.array([[0]*(w-2)]*(h-2))
 imgy = np.array([[0]*(w-2)]*(h-2))
 img = np.array([[0]*(w-2)]*(h-2))
