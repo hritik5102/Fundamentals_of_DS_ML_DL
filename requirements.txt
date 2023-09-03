@@ -9,7 +9,7 @@ matplotlib==3.4.2
 joblib==1.2.0
 
 # Easy http requests
-requests==2.26.0
+requests==2.31.0
 
 ##### Machine Learning packages
 scikit-learn==1.4.2
