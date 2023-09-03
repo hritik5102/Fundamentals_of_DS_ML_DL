@@ -1,6 +1,6 @@
 ## Fundamentals_of_DS_ML_DL &nbsp; ![](https://img.shields.io/github/forks/hritik5102/Fundamentals_of_DS_ML_DL?style=social) ![](https://img.shields.io/github/stars/hritik5102/Fundamentals_of_DS_ML_DL?style=social) ![](https://img.shields.io/github/watchers/hritik5102/Fundamentals_of_DS_ML_DL?style=social) <br>
 
-![](https://img.shields.io/github/repo-size/hritik5102/Fundamentals_of_DS_ML_DL) ![](https://img.shields.io/github/license/hritik5102/Fundamentals_of_DS_ML_DL?color=red)<br>
+![](https://img.shields.io/github/repo-size/hritik5102/Fundamentals_of_DS_ML_DL) ![](https://img.shields.io/github/license/hritik5102/Fundamentals_of_DS_ML_DL?color=red) ![](https://opencollective.com/fundamentals-of-ds-ml-dl/tiers/donation/badge.svg?label=Donation&color=brightgreen) ![](https://opencollective.com/fundamentals-of-ds-ml-dl/tiers/badge.svg)<br>
 ![](https://img.shields.io/github/issues/hritik5102/Fundamentals_of_DS_ML_DL?color=green) ![](https://img.shields.io/github/issues-pr/hritik5102/Fundamentals_of_DS_ML_DL?color=green) ![](https://img.shields.io/github/downloads/hritik5102/Fundamentals_of_DS_ML_DL/total) ![](https://img.shields.io/github/last-commit/hritik5102/Fundamentals_of_DS_ML_DL) ![](https://img.shields.io/github/contributors/hritik5102/Fundamentals_of_DS_ML_DL)
 
 
@@ -70,12 +70,13 @@ Discuss the features, ideas you want to add to the project from [here 📌](http
 Distributed under the [MIT License](LICENSE). See LICENSE for more information.
 ## Support me
 
-[(Back to Top)](#table-of-contents)
+![Open collective](https://opencollective.com/fundamentals-of-ds-ml-dl/tiers/sponsors.svg?avatarHeight=120)
 
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hritikdj)
+
 ## Contributors
 
 |                                                                                                                                                                                                                   <a href="https://hritik5102.github.io/"><img src="https://avatars.githubusercontent.com/hritik5102" width="150px" height="150px" /></a>                                                                                                                                                                                                                    |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |                                                                                                                                                                                                                                                             **[Hritik Jaiswal](https://hritik5102.github.io/)**                                                                                                                                                                                                                                                              |
-| <a href="https://twitter.com/imhritik_dj"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/hritik5102"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/hritik.jaiswal.56808"><img src="https://i.ibb.co/zmYNW4p/facebook.png" width="32px" height="32px"></a> <a href="https://www.linkedin.com/in/hritik-jaiswal/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
+| <a href="https://twitter.com/imhritik_dj"><img src="https://i.ibb.co/kmgQVyW/twitter.png" width="32px" height="32px"></a> <a href="https://github.com/hritik5102"><img src="https://cdn.iconscout.com/icon/free/png-256/github-108-438008.png" width="32px" height="32px"></a> <a href="https://www.facebook.com/hritik.jaiswal.56808"><img src="https://cdn.freebiesupply.com/logos/large/2x/medium-m-logo-svg-vector.svg" width="32px" height="32px"></a> <a href="https://www.linkedin.com/in/hritik-jaiswal/"><img src="https://i.ibb.co/Kx2GSrT/linkedin.png" width="32px" height="32px"></a> |
