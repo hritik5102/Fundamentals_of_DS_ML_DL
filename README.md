@@ -70,7 +70,7 @@ Discuss the features, ideas you want to add to the project from [here 📌](http
 Distributed under the [MIT License](LICENSE). See LICENSE for more information.
 ## Support me
 
-![Open collective](https://opencollective.com/fundamentals-of-ds-ml-dl/tiers/sponsors.svg?avatarHeight=120)
+<a href="https://opencollective.com/fundamentals-of-ds-ml-dl/contribute/donation-64312/checkout?interval=oneTime&amount=500&contributeAs=me"><img src="https://opencollective.com/fundamentals-of-ds-ml-dl/tiers/sponsors.svg?avatarHeight=120" /></a>
 
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/hritikdj)
 
