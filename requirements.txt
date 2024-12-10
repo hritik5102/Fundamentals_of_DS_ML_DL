@@ -43,7 +43,7 @@ tensorflow-estimator==1.15.1
 ##### Image manipulation
 opencv-python==4.5.3
 imageio==2.9.0
-Pillow==9.3.0
+Pillow==10.3.0
 scikit-image==0.18.3
 graphviz
 
