@@ -61,7 +61,7 @@ numexpr==2.7.2
 
 # Optional: these libraries can be useful in the classification chapter,
 # exercise 4.
-nltk==3.6.6
+nltk==3.10.0
 urlextract==1.2.0
 
 ## Refer from : https://github.com/ageron/handson-ml/blob/master/requirements.txt
